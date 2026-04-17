@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Philip Maier – Versicherungsmakler im Allgäu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Mulish:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream:   #f8f5f0;
+  --white:   #ffffff;
+  --ink:     #1a1a18;
+  --ink2:    #2e2e2c;
+  --mid:     #6b6b67;
+  --light:   #e8e4dc;
+  --border:  #dedad2;
+  --green:   #2d6a4f;
+  --green2:  #1b4332;
+  --green-l: #d8f3dc;
+  --gold:    #b5883a;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: "Mulish", sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(248,245,240,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 60px;
+  height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-brand {
+  font-family: "Playfair Display", serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: -0.3px;
+}
+.nav-brand span { color: var(--green); }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--mid);
+  text-decoration: none;
+  padding: 7px 16px;
+  border-radius: 6px;
+  transition: color .2s, background .2s;
+}
+.nav-links a:hover { color: var(--ink); background: var(--light); }
+.nav-cta {
+  background: var(--green) !important;
+  color: var(--white) !important;
+  padding: 9px 20px !important;
+  border-radius: 7px !important;
+}
+.nav-cta:hover { background: var(--green2) !important; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  padding-top: 66px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 60px 80px 60px;
+}
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 28px;
+}
+.hero-eyebrow::before {
+  content: "";
+  display: block;
+  width: 24px; height: 1.5px;
+  background: var(--green);
+}
+.hero-title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(40px, 4.5vw, 66px);
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -1px;
+  color: var(--ink);
+  margin-bottom: 24px;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--green);
+}
+.hero-sub {
+  font-size: 17px;
+  color: var(--mid);
+  line-height: 1.75;
+  max-width: 420px;
+  margin-bottom: 44px;
+}
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--green);
+  color: var(--white);
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 14px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  border: none; cursor: pointer;
+  transition: background .2s, transform .15s, box-shadow .2s;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-primary:hover {
+  background: var(--green2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(45,106,79,.3);
+}
+.btn-primary svg { width:16px; height:16px; stroke:currentColor; fill:none; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; }
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 14px 28px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  text-decoration: none;
+  transition: border-color .2s, transform .15s;
+  display: inline-block;
+}
+.btn-ghost:hover { border-color: var(--ink); transform: translateY(-2px); }
+
+.hero-trust {
+  margin-top: 48px;
+  padding-top: 36px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 36px;
+  flex-wrap: wrap;
+}
+.trust-item { display: flex; flex-direction: column; }
+.trust-num {
+  font-family: "Playfair Display", serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--green);
+  line-height: 1;
+}
+.trust-label { font-size: 12px; color: var(--mid); margin-top: 4px; font-weight: 400; }
+
+.hero-right {
+  position: relative;
+  background: var(--light);
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.hero-right::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(160deg, rgba(45,106,79,.06) 0%, transparent 60%);
+}
+/* Photo placeholder – replace with real image */
+.hero-photo-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 520px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0 40px;
+}
+.hero-photo-placeholder {
+  width: 320px;
+  height: 460px;
+  background: linear-gradient(160deg, #d0e8d6 0%, #a8c8b4 100%);
+  border-radius: 180px 180px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--green2);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.hero-photo-placeholder svg { width: 48px; height: 48px; stroke: var(--green2); fill: none; stroke-width: 1.5; stroke-linecap: round; }
+
+.hero-badge {
+  position: absolute;
+  top: 48px; right: 40px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.08);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.badge-icon {
+  width: 40px; height: 40px;
+  background: var(--green-l);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.badge-icon svg { width: 20px; height: 20px; stroke: var(--green); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.badge-text { font-size: 12px; color: var(--mid); line-height: 1.4; }
+.badge-text strong { display: block; font-size: 14px; color: var(--ink); font-weight: 600; margin-bottom: 1px; }
+
+/* ── SECTION BASE ── */
+.section {
+  padding: 100px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.section-full {
+  padding: 100px 0;
+}
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 60px;
+}
+.eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 14px;
+  display: flex; align-items: center; gap: 10px;
+}
+.eyebrow::before { content: ""; display: block; width: 20px; height: 1.5px; background: var(--green); }
+h2.serif {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(32px, 3.5vw, 52px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.8px;
+  color: var(--ink);
+  margin-bottom: 18px;
+}
+h2.serif em { font-style: italic; color: var(--green); }
+.lead {
+  font-size: 16px;
+  color: var(--mid);
+  line-height: 1.75;
+  max-width: 520px;
+}
+
+/* ── ÜBER MICH ── */
+.ueber { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.ueber-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.ueber-text p {
+  font-size: 16px;
+  color: var(--mid);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+.ueber-text p:last-child { margin-bottom: 0; }
+.ueber-text p strong { color: var(--ink); font-weight: 600; }
+.ueber-visual {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.ueber-card {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px 28px;
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  transition: box-shadow .25s, transform .25s;
+}
+.ueber-card:hover {
+  box-shadow: 0 6px 24px rgba(0,0,0,.07);
+  transform: translateY(-2px);
+}
+.ucard-icon {
+  width: 44px; height: 44px;
+  background: var(--green-l);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.ucard-icon svg { width: 22px; height: 22px; stroke: var(--green); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.ucard-title { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+.ucard-text { font-size: 13.5px; color: var(--mid); line-height: 1.6; }
+
+/* ── LEISTUNGEN ── */
+.leistungen-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 56px;
+}
+.lcard {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 36px 32px;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow .25s, transform .25s;
+  cursor: default;
+}
+.lcard:hover { box-shadow: 0 12px 40px rgba(0,0,0,.09); transform: translateY(-3px); }
+.lcard::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 0;
+  background: var(--green);
+  border-radius: 0 0 4px 4px;
+  transition: height .35s ease;
+}
+.lcard:hover::after { height: 100%; }
+.lcard-num {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--green); margin-bottom: 20px;
+}
+.lcard-icon {
+  width: 48px; height: 48px;
+  background: var(--green-l);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+}
+.lcard-icon svg { width: 24px; height: 24px; stroke: var(--green); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.lcard h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 22px; font-weight: 700;
+  color: var(--ink); margin-bottom: 12px;
+  letter-spacing: -0.3px;
+}
+.lcard p { font-size: 14.5px; color: var(--mid); line-height: 1.7; }
+
+/* ── SO FUNKTIONIERTS ── */
+.process { background: var(--ink); }
+.process .eyebrow::before { background: var(--green-l); }
+.process .eyebrow { color: var(--green-l); }
+.process h2.serif { color: var(--white); }
+.process h2.serif em { color: #6ecb8a; }
+.process-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: rgba(255,255,255,.07);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.08);
+  margin-top: 56px;
+}
+.step {
+  background: rgba(255,255,255,.03);
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 32px;
+  align-items: center;
+  padding: 36px 44px;
+  transition: background .2s;
+}
+.step:hover { background: rgba(255,255,255,.06); }
+.step-num {
+  font-family: "Playfair Display", serif;
+  font-size: 52px;
+  font-weight: 700;
+  color: rgba(255,255,255,.12);
+  line-height: 1;
+  letter-spacing: -2px;
+  text-align: center;
+}
+.step-title {
+  font-family: "Playfair Display", serif;
+  font-size: 20px; font-weight: 700;
+  color: var(--white); margin-bottom: 8px;
+}
+.step-text { font-size: 14px; color: rgba(255,255,255,.5); line-height: 1.65; }
+
+/* ── TERMIN / CTA ── */
+.termin {
+  text-align: center;
+  background: var(--green);
+  position: relative;
+  overflow: hidden;
+}
+.termin::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.12) 0%, transparent 70%);
+}
+.termin .eyebrow { color: rgba(255,255,255,.7); justify-content: center; }
+.termin .eyebrow::before { background: rgba(255,255,255,.4); }
+.termin h2.serif { color: var(--white); max-width: 600px; margin: 0 auto 16px; }
+.termin h2.serif em { color: #a8e6c4; font-style: italic; }
+.termin p { color: rgba(255,255,255,.75); font-size: 16px; max-width: 480px; margin: 0 auto 40px; }
+.btn-white {
+  background: var(--white);
+  color: var(--green2);
+  font-family: "Mulish", sans-serif;
+  font-size: 15px; font-weight: 700;
+  padding: 16px 36px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 10px;
+  transition: transform .15s, box-shadow .2s;
+  position: relative;
+}
+.btn-white:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(0,0,0,.2); }
+.btn-white svg { width: 18px; height: 18px; stroke: var(--green); fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ── KONTAKT ── */
+.kontakt { background: var(--cream); }
+.kontakt-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.kinfo { display: flex; flex-direction: column; gap: 0; margin-top: 40px; }
+.krow {
+  display: flex; align-items: flex-start; gap: 16px;
+  padding: 20px 0; border-bottom: 1px solid var(--border);
+}
+.krow:first-child { border-top: 1px solid var(--border); }
+.krow-icon {
+  width: 36px; height: 36px;
+  background: var(--green-l); border-radius: 8px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.krow-icon svg { width: 16px; height: 16px; stroke: var(--green); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.krow-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--mid); margin-bottom: 3px; }
+.krow-val { font-size: 15px; color: var(--ink); text-decoration: none; transition: color .2s; }
+a.krow-val:hover { color: var(--green); }
+
+.form-group { margin-bottom: 18px; }
+.form-label { display: block; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--mid); margin-bottom: 8px; }
+.form-input, .form-textarea, .form-select {
+  width: 100%;
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  color: var(--ink);
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-family: "Mulish", sans-serif;
+  font-size: 15px; font-weight: 300;
+  outline: none;
+  transition: border-color .2s;
+  -webkit-appearance: none;
+}
+.form-input:focus, .form-textarea:focus, .form-select:focus { border-color: var(--green); }
+.form-input::placeholder, .form-textarea::placeholder { color: #bbb; }
+.form-textarea { resize: vertical; min-height: 120px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-select option { background: #fff; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink2);
+  border-top: 1px solid rgba(255,255,255,.06);
+  padding: 48px 60px 36px;
+}
+.footer-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 20px;
+}
+.footer-brand {
+  font-family: "Playfair Display", serif;
+  font-size: 17px; font-weight: 700;
+  color: rgba(255,255,255,.6);
+}
+.footer-brand span { color: #6ecb8a; }
+.footer-copy { font-size: 12.5px; color: rgba(255,255,255,.3); }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { font-size: 12.5px; color: rgba(255,255,255,.3); text-decoration: none; transition: color .2s; }
+.footer-links a:hover { color: rgba(255,255,255,.7); }
+
+/* ── REVEAL ── */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .65s ease, transform .65s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-left { padding: 60px 24px; }
+  .hero-right { min-height: 360px; }
+  .section { padding: 70px 24px; }
+  .section-inner { padding: 0 24px; }
+  .ueber-grid { grid-template-columns: 1fr; gap: 40px; }
+  .leistungen-grid { grid-template-columns: 1fr; }
+  .step { grid-template-columns: 60px 1fr; gap: 20px; padding: 28px 24px; }
+  .kontakt-grid { grid-template-columns: 1fr; gap: 40px; }
+  .form-row { grid-template-columns: 1fr; }
+  footer { padding: 40px 24px 28px; }
+  .footer-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">Maier <span>Finanzen</span></a>
+  <ul class="nav-links">
+    <li><a href="#ueber">Über mich</a></li>
+    <li><a href="#leistungen">Leistungen</a></li>
+    <li><a href="#ablauf">Ablauf</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+    <li><a href="https://calendly.com/philipmaier/terminvereinbarung" target="_blank" class="nav-cta">Termin buchen</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Versicherungsmakler · Allgäu</div>
+    <h1 class="hero-title reveal">
+      Finanzen, die<br>
+      <em>wirklich</em> zu<br>
+      dir passen.
+    </h1>
+    <p class="hero-sub reveal">Kein Produkt von der Stange. Ich bin Philip – unabhängiger Versicherungsmakler aus dem Allgäu. Gemeinsam bauen wir deinen persönlichen Finanzplan.</p>
+    <div class="hero-actions reveal">
+      <a href="https://calendly.com/philipmaier/terminvereinbarung" target="_blank" class="btn-primary">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        Kostenloses Gespräch buchen
+      </a>
+      <a href="#leistungen" class="btn-ghost">Leistungen ansehen</a>
+    </div>
+    <div class="hero-trust reveal">
+      <div class="trust-item">
+        <span class="trust-num">100%</span>
+        <span class="trust-label">unabhängig & ungebunden</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-num">∞</span>
+        <span class="trust-label">Anbieter im Vergleich</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-num">4.0</span>
+        <span class="trust-label">Finanzberatung digital</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-placeholder">
+        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Foto Philip Maier
+      </div>
+    </div>
+    <div class="hero-badge">
+      <div class="badge-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="badge-text">
+        <strong>IHK-zugelassen</strong>
+        Versicherungsmakler §34d GewO
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ÜBER MICH -->
+<section class="section-full ueber" id="ueber">
+  <div class="section-inner">
+    <div class="ueber-grid">
+      <div class="ueber-text">
+        <div class="eyebrow reveal">Über mich</div>
+        <h2 class="serif reveal">Lerne mich <em>kennen</em></h2>
+        <div class="reveal">
+          <p>Schon seit vielen Jahren fasziniert mich das Thema Investieren – die Möglichkeit, <strong>finanzielle Potenziale zu entfalten</strong> und mit klugen Entscheidungen echten Mehrwert zu schaffen.</p>
+          <p>Als ich die Tätigkeit des Versicherungsmaklers für mich entdeckte, war sofort klar: Hier kann ich genau das tun, was mir wirklich wichtig ist – Menschen individuell begleiten und dabei unterstützen, ihre finanziellen Ziele zu erreichen.</p>
+          <p>Aus diesem Antrieb heraus habe ich <strong>Maier Finanzen</strong> gegründet. Ich arbeite ausschließlich mit wissenschaftlich fundierten Erkenntnissen – und bin dabei vollkommen unabhängig von einzelnen Anbietern.</p>
+        </div>
+        <div class="reveal" style="margin-top:36px">
+          <a href="https://calendly.com/philipmaier/terminvereinbarung" target="_blank" class="btn-primary">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            Jetzt kennenlernen
+          </a>
+        </div>
+      </div>
+      <div class="ueber-visual reveal">
+        <div class="ueber-card">
+          <div class="ucard-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div>
+            <div class="ucard-title">IHK-zugelassener Makler</div>
+            <div class="ucard-text">Erlaubnis nach §34d Abs. 1 GewO, gemeldet bei der IHK für München und Oberbayern.</div>
+          </div>
+        </div>
+        <div class="ueber-card">
+          <div class="ucard-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <div>
+            <div class="ucard-title">Vollständig digitalisiert</div>
+            <div class="ucard-text">Digitaler Finanzordner in der App, Videoberatung von zu Hause – flexibel und modern.</div>
+          </div>
+        </div>
+        <div class="ueber-card">
+          <div class="ucard-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+          <div>
+            <div class="ucard-title">Honorartarife möglich</div>
+            <div class="ucard-text">Beratung ohne Provision – transparent, auf Wunsch auch als reines Honorarmodell.</div>
+          </div>
+        </div>
+        <div class="ueber-card">
+          <div class="ucard-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+          <div>
+            <div class="ucard-title">Ganzheitliche Beratung</div>
+            <div class="ucard-text">Vom kompletten Angebotspool – kein gebundener Vertreter, sondern echter Makler für dich.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEISTUNGEN -->
+<section class="section" id="leistungen">
+  <div class="eyebrow reveal">Leistungen</div>
+  <h2 class="serif reveal">Was ich <em>für dich</em> tue</h2>
+  <p class="lead reveal">Ich nutze den kompletten Angebotspool und erstelle individuell deinen Finanzplan – unabhängig, transparent und wissenschaftlich fundiert.</p>
+  <div class="leistungen-grid">
+    <div class="lcard reveal">
+      <div class="lcard-num">01</div>
+      <div class="lcard-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
+      <h3>Unabhängig & ganzheitlich</h3>
+      <p>Ich bin an keinen Anbieter gebunden. Du bekommst einen echten Vergleich des gesamten Marktes – und den Plan, der wirklich zu deiner Situation passt.</p>
+    </div>
+    <div class="lcard reveal" style="transition-delay:.08s">
+      <div class="lcard-num">02</div>
+      <div class="lcard-icon"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+      <h3>Transparente Beratung</h3>
+      <p>Zahlen, Daten, Fakten – du behältst den Überblick über jeden Schritt. Ich erkläre, was ich tue und warum. Keine Blackbox, kein Kleingedrucktes.</p>
+    </div>
+    <div class="lcard reveal" style="transition-delay:.16s">
+      <div class="lcard-num">03</div>
+      <div class="lcard-icon"><svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+      <h3>Nachweisbarer Mehrwert</h3>
+      <p>Wissenschaftlich fundierte Erkenntnisse über Kapitalmärkte bilden die Grundlage. Auf Wunsch auch mit Honorartarifen – ganz ohne Provisionen.</p>
+    </div>
+    <div class="lcard reveal" style="transition-delay:.24s">
+      <div class="lcard-num">04</div>
+      <div class="lcard-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+      <h3>Voll digitalisiert</h3>
+      <p>Digitaler Finanzordner in der App, Videoberatung von zu Hause aus. Als Finanzberater 4.0 bin ich schon heute dort, wo andere erst hinwollen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SO FUNKTIONIERT ES -->
+<section class="section-full process" id="ablauf">
+  <div class="section-inner">
+    <div class="eyebrow reveal">Ablauf</div>
+    <h2 class="serif reveal">So einfach <em>geht's</em></h2>
+    <div class="process-steps">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <div>
+          <div class="step-title">Kostenloses Kennenlerngespräch</div>
+          <p class="step-text">Buch dir einfach einen Termin – ganz entspannt per Video oder Telefon. Ich stelle mich vor, du erzählst mir von deiner Situation. Kein Druck, kein Verkauf.</p>
+        </div>
+      </div>
+      <div class="step reveal" style="transition-delay:.08s">
+        <div class="step-num">02</div>
+        <div>
+          <div class="step-title">Analyse & individueller Finanzplan</div>
+          <p class="step-text">Ich analysiere deine Situation, Ziele und Wünsche – und erstelle daraus einen maßgeschneiderten Finanzplan aus dem gesamten Marktangebot.</p>
+        </div>
+      </div>
+      <div class="step reveal" style="transition-delay:.16s">
+        <div class="step-num">03</div>
+        <div>
+          <div class="step-title">Umsetzung & laufende Betreuung</div>
+          <p class="step-text">Wir setzen den Plan gemeinsam um – und ich bleibe an deiner Seite. Laufende Betreuung, aktives Management, immer ansprechbar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TERMIN CTA -->
+<section class="section-full termin">
+  <div class="section-inner" style="text-align:center;position:relative">
+    <div class="eyebrow reveal" style="justify-content:center">Kostenlos & unverbindlich</div>
+    <h2 class="serif reveal" style="max-width:580px;margin:0 auto 16px">
+      Bereit für deinen<br><em>persönlichen Finanzplan?</em>
+    </h2>
+    <p class="reveal" style="color:rgba(255,255,255,.75);font-size:16px;max-width:460px;margin:0 auto 40px">
+      Stell dir einfach einen Termin ein – ich melde mich persönlich bei dir. Das Erstgespräch ist kostenlos und unverbindlich.
+    </p>
+    <a href="https://calendly.com/philipmaier/terminvereinbarung" target="_blank" class="btn-white reveal">
+      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      Jetzt Termin buchen
+    </a>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section class="section kontakt" id="kontakt">
+  <div class="kontakt-grid">
+    <div>
+      <div class="eyebrow reveal">Kontakt</div>
+      <h2 class="serif reveal">Schreib mir <em>direkt</em></h2>
+      <p class="lead reveal">Lieber eine Nachricht schicken? Kein Problem – ich antworte in der Regel innerhalb von 24 Stunden.</p>
+      <div class="kinfo reveal">
+        <div class="krow">
+          <div class="krow-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><div class="krow-label">Adresse</div><span class="krow-val">Römerstr. 6, 87648 Aitrang</span></div>
+        </div>
+        <div class="krow">
+          <div class="krow-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81a19.79 19.79 0 01-3.07-8.64A2 2 0 012.18 0h3a2 2 0 012 1.72c.128.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.572 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+          <div><div class="krow-label">Telefon</div><a href="tel:+491702993053" class="krow-val">+49 170 / 299 30 53</a></div>
+        </div>
+        <div class="krow">
+          <div class="krow-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><div class="krow-label">E-Mail</div><a href="mailto:philip.maier@koenigswege.com" class="krow-val">philip.maier@koenigswege.com</a></div>
+        </div>
+        <div class="krow">
+          <div class="krow-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></div>
+          <div><div class="krow-label">Instagram</div><a href="https://www.instagram.com/maierphilip/" target="_blank" class="krow-val">@maierphilip</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <form onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Vorname</label><input type="text" class="form-input" placeholder="Max" required></div>
+          <div class="form-group"><label class="form-label">Nachname</label><input type="text" class="form-input" placeholder="Mustermann" required></div>
+        </div>
+        <div class="form-group"><label class="form-label">E-Mail</label><input type="email" class="form-input" placeholder="max@beispiel.de" required></div>
+        <div class="form-group"><label class="form-label">Telefon (optional)</label><input type="tel" class="form-input" placeholder="+49 ..."></div>
+        <div class="form-group">
+          <label class="form-label">Thema</label>
+          <select class="form-select">
+            <option value="">Bitte auswählen</option>
+            <option>Altersvorsorge</option>
+            <option>Krankenversicherung</option>
+            <option>Berufsunfähigkeit</option>
+            <option>Investment & Kapitalanlage</option>
+            <option>Versicherungen allgemein</option>
+            <option>Sonstiges</option>
+          </select>
+        </div>
+        <div class="form-group"><label class="form-label">Nachricht</label><textarea class="form-textarea" placeholder="Womit kann ich dir helfen?"></textarea></div>
+        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;border:none;cursor:pointer;font-family:inherit">
+          <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Nachricht senden
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">Maier <span>Finanzen</span></div>
+    <div class="footer-copy">© 2025 Philip Maier · Versicherungsmakler · Aitrang</div>
+    <div class="footer-links">
+      <a href="https://maiers-finanzen.squarespace.com/impressum" target="_blank">Impressum</a>
+      <a href="https://maierfinanzen.de/visitenkarte" target="_blank">Visitenkarte</a>
+      <a href="https://maiers-finanzen.squarespace.com/erstinformation" target="_blank">Erstinformation</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  window.addEventListener('scroll', () => {
+    document.querySelector('nav').style.boxShadow =
+      window.scrollY > 40 ? '0 2px 20px rgba(0,0,0,.07)' : 'none';
+  });
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button[type=submit]');
+    btn.innerHTML = '<svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round"><polyline points="20 6 9 17 4 12"/></svg> Gesendet!';
+    btn.style.background = '#2d6a4f';
+    btn.disabled = true;
+  }
+</script>
+</body>
+</html>
